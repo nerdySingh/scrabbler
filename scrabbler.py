@@ -9,25 +9,29 @@ def checkLetterInList(u_l,content,remaining_list):
         if u_l == content[i][0]:
             freq = collections.Counter(content[i])
             temp = u_l
-            for j in range(len(u_l)):
-                if freq[temp] <=1:
-                    for v in remaining_list:
-                         #flag = checkRemaininLetters(v,content[i])
-                         #print(flag
-                         #print(freq[v])
-                         if freq[v] >1:
-                             flag = False
+            #for j in range(len(u_l)):# i guess i dont need the loop i was right 
+            if freq[temp] <=1:
+                for v in remaining_list:
+                        if freq[v] >1:
+                            flag = False
                              #print(flag)
-                             break
-                         else:
+                            break
+                        else:
                             flag = True
+                if flag == True:
+                    remaining_list = sys.argv[1]
+                    flag = True
+                    freq = collections.Counter(content[i])
+                    for k in content[i]:
+                        if k not in remaining_list:
+                            flag=False
+                            break
                     if flag == True:
                         word_list.append(content[i])
     
-    thefile = open('test.txt', 'w')
+    thefile = open('test_without_j_loop.txt', 'w')
     for item in word_list:
-        thefile.write("%s\n" % item)
-                             
+        thefile.write("%s\n" % item)                    
 
     
                 
@@ -54,5 +58,4 @@ for i in user_input:
     remaining_list = remaining_list.replace(u_l,"")
     print(remaining_list)
 ["abbess","abbesses","abbey","abbeys","abbot","abbots"]
-
     '''
